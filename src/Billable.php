@@ -18,6 +18,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 trait Billable
 {
     /**
+     * The Eloquent subscription model name.
+     *
+     * @var string
+     */
+    protected static $subscriptionModel = Subscription::class;
+
+    /**
      * Make a "one off" charge on the customer for the given amount.
      *
      * @param  int  $amount
@@ -165,7 +172,7 @@ trait Billable
      */
     public function subscriptions()
     {
-        return $this->hasMany(Subscription::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(self::$subscriptionModel)->orderBy('created_at', 'desc');
     }
 
     /**
