@@ -219,7 +219,7 @@ class SubscriptionBuilder
             $customer = $this->owner->asBraintreeCustomer();
 
             if ($token) {
-                $this->owner->updateCard($token);
+                $this->owner->updateCard($token, $options);
             }
         }
 

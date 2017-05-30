@@ -329,9 +329,11 @@ trait Billable
             'card_last_four' => $paypalAccount ? null : $response->paymentMethod->last4,
         ])->save();
 
-        $this->updateSubscriptionsToPaymentMethod(
-            $response->paymentMethod->token
-        );
+        if ($response->paymentMethod->default) {
+            $this->updateSubscriptionsToPaymentMethod(
+                $response->paymentMethod->token
+            );
+        }
     }
 
     /**
