@@ -25,6 +25,27 @@ trait Billable
     protected static $subscriptionModel = Subscription::class;
 
     /**
+     * Set the Subscription Model
+     * - Allows for override in constructor
+     *
+     * @param $model
+     */
+    public function setSubscriptionModel($model)
+    {
+        self::$subscriptionModel = $model;
+    }
+
+    /**
+     * Get Subscription Model
+     *
+     * @return string
+     */
+    public function getSubscriptionModel()
+    {
+        return self::$subscriptionModel;
+    }
+
+    /**
      * Make a "one off" charge on the customer for the given amount.
      *
      * @param  int  $amount
