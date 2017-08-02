@@ -418,7 +418,7 @@ trait Billable
      */
     public function createAsBraintreeCustomer($token, array $options = [])
     {
-        unset($options['creditCard']['options']['makeDefault']);
+        unset($options['options']['makeDefault']);
         $response = BraintreeCustomer::create(
             array_replace_recursive([
                 'firstName' => Arr::get(explode(' ', $this->name), 0),
